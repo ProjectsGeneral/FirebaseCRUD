@@ -62,4 +62,37 @@ Future<void> deletePeople(String uid) async {
 
 /// METODO PARA CATEGORIAS
 
+Future<List> getcategorias() async {
+  List categoria = [];
+  CollectionReference collectionReferenceCategoria =
+      db.collection('categorias');
+
+  QuerySnapshot queryCategorias = await collectionReferenceCategoria.get();
+
+  for (var doc in queryCategorias.docs) {
+    
+    final Map<String,dynamic> data = doc.data() as Map<String,dynamic>;
+    final categ = {
+      "nombre": data['nombre'],
+      "uid": doc.id
+    };
+    
+    categoria.add(categ);
+  }
+
+  return categoria;
+}
+
+Future<void> addCategorias(String nombre) async {
+  await db.collection('categorias').add({"nombre": nombre});
+}
+
+Future<void> updateCategorias(String uid, String newNombre) async {
+  await db.collection('categorias').doc(uid).set({"nombre": newNombre});
+}
+
+Future<void> deleteCategorias(String uid) async {
+  await db.collection('categorias').doc(uid).delete();
+}
+
 

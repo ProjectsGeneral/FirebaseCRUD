@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'pages/product_list_page.dart';
 import 'pages/user_home_page.dart';
 
 Future<void> main() async {
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
         } else if (email == 'josecrud@gmail.com') {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Placeholder()),
+            MaterialPageRoute(builder: (context) => Categorias()),
           );
         } else if (email == 'josuecrud@gmail.com') {
           Navigator.push(
