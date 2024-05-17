@@ -1,6 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
+/* import 'package:firebase_core/firebase_core.dart'; */
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+/* import 'package:firebase_auth/firebase_auth.dart'; */
+import 'package:jrm_jcz_jjc_firebase/pages/user_create_page.dart';
 
 import 'user_list_page.dart';
 
@@ -11,7 +12,7 @@ class UserHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Home Page'),
+        title: const Text('Menu de usuario'),
       ),
       body: Center(
         child: Column(
@@ -24,16 +25,16 @@ class UserHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const UserListPage()),
                 );
               },
-              child: const Text('List Users'),
+              child: const Text('Ver usuarios'),
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
+              onPressed: () async {
+                await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Placeholder()),
+                  MaterialPageRoute(builder: (context) => const AddName()),
                 );
               },
-              child: const Text('Create User'),
+              child: const Text('Crear usuario'),
             ),
           ],
         ),
