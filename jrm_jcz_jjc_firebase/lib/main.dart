@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'pages/user_home_page.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -35,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
   String _errorMessage = '';
 
-  Future<void> _signInWithEmailAndPassword() async {
+  Future<bool> _signInWithEmailAndPassword() async {
     try {
       final String email = _emailController.text.trim();
       final String password = _passwordController.text.trim();
@@ -46,30 +48,54 @@ class _LoginPageState extends State<LoginPage> {
         password: password,
       );
 
-      // Si la autenticación es exitosa, mostrar un diálogo de login exitoso
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Login Exitoso'),
-            content: const Text('Has iniciado sesión correctamente.'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
+      // Devolver true para indicar que el inicio de sesión fue exitoso
+      return true;
     } catch (e) {
       // Si hay un error durante la autenticación, mostrar un mensaje de error
       setState(() {
         _errorMessage =
             'Error al iniciar sesión. Por favor, verifica tus credenciales.';
       });
+
+      // Devolver false para indicar que el inicio de sesión falló
+      return false;
+    }
+  }
+
+  void _handleLogin() async {
+    bool success = await _signInWithEmailAndPassword();
+    if (success) {
+      // Obtener el correo electrónico del usuario autenticado
+      final User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        final String email = user.email ?? '';
+
+        // Verificar el correo electrónico e implementar la lógica de redirección
+        if (email == 'jhonnycrud@gmail.com') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => UserHomePage()),
+          );
+        } else if (email == 'josecrud@gmail.com') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Placeholder()),
+          );
+        } else if (email == 'josuecrud@gmail.com') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Placeholder()),
+          );
+        } else {
+          // Manejar otros casos o redirigir a una página predeterminada
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Placeholder()),
+          );
+        }
+      }
+    } else {
+      print('Fallo en el inicio de sesión');
     }
   }
 
@@ -100,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: _signInWithEmailAndPassword,
+              onPressed: _handleLogin,
               child: const Text('Iniciar Sesión'),
             ),
             if (_errorMessage.isNotEmpty)
