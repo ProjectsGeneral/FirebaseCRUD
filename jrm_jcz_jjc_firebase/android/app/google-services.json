@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "357131301631",
+    "project_id": "nuevofirebase-94733",
+    "storage_bucket": "nuevofirebase-94733.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357131301631:android:eabe6f5addcf09928612ca",
+        "android_client_info": {
+          "package_name": "com.example.jrm_jcz_jjc_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLHHDx0tUD3hjVrASnGtYOte5XNKSexEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
