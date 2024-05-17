@@ -77,12 +77,12 @@ class _LoginPageState extends State<LoginPage> {
             context,
             MaterialPageRoute(builder: (context) => UserHomePage()),
           );
-        } else if (email == 'josecrud@gmail.com') {
+        } else if (email == 'josue@gmail.com') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Categorias()),
           );
-        } else if (email == 'josuecrud@gmail.com') {
+        } else if (email == 'jose@gmail.com') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Placeholder()),
