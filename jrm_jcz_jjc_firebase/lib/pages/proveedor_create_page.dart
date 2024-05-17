@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../services/firebase_service.dart';
 
-class AddCategorias extends StatefulWidget {
-  const AddCategorias({super.key});
+class AddProveedor extends StatefulWidget {
+  const AddProveedor({super.key});
 
   @override
-  State<AddCategorias> createState() => _AddCategoriasState();
+  State<AddProveedor> createState() => _AddProveedorState();
 }
 
-class _AddCategoriasState extends State<AddCategorias> {
+class _AddProveedorState extends State<AddProveedor> {
 
   TextEditingController nameController = TextEditingController(text: "");
 
@@ -17,7 +17,7 @@ class _AddCategoriasState extends State<AddCategorias> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agregar Categorías'),
+        title: Text('Agregar Proveedor'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),

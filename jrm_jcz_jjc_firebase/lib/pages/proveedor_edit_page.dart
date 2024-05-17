@@ -10,16 +10,16 @@ class ArgumentEdit {
       required this.uid}); // Asegúrate de incluir el UID aquí
 }
 
-class EditCategorias extends StatefulWidget {
+class EditProveedor extends StatefulWidget {
   final ArgumentEdit arguments;
 
-  const EditCategorias({Key? key, required this.arguments}) : super(key: key);
+  const EditProveedor({Key? key, required this.arguments}) : super(key: key);
 
   @override
-  State<EditCategorias> createState() => _EditCategoriasState();
+  State<EditProveedor> createState() => _EditProveedorState();
 }
 
-class _EditCategoriasState extends State<EditCategorias> {
+class _EditProveedorState extends State<EditProveedor> {
   late TextEditingController nameController;
 
   @override
@@ -34,7 +34,7 @@ class _EditCategoriasState extends State<EditCategorias> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar Categorías'),
+        title: Text('Editar Proveedor'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),

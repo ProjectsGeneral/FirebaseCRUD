@@ -60,6 +60,7 @@ Future<void> deletePeople(String uid) async {
 }
 
 
+
 /// METODO PARA CATEGORIAS
 
 Future<List> getcategorias() async {
@@ -95,4 +96,40 @@ Future<void> deleteCategorias(String uid) async {
   await db.collection('categorias').doc(uid).delete();
 }
 
+
+
+/// METODO PARA PROVEEDORES
+
+Future<List> getProveedor() async {
+  List categoria = [];
+  CollectionReference collectionReferenceCategoria =
+      db.collection('proveedor');
+
+  QuerySnapshot queryCategorias = await collectionReferenceCategoria.get();
+
+  for (var doc in queryCategorias.docs) {
+    
+    final Map<String,dynamic> data = doc.data() as Map<String,dynamic>;
+    final categ = {
+      "nombre": data['nombre'],
+      "uid": doc.id
+    };
+    
+    categoria.add(categ);
+  }
+
+  return categoria;
+}
+
+Future<void> addProveedor(String nombre) async {
+  await db.collection('proveedor').add({"nombre": nombre});
+}
+
+Future<void> updateProveedor(String uid, String newNombre) async {
+  await db.collection('proveedor').doc(uid).set({"nombre": newNombre});
+}
+
+Future<void> deleteProveedor(String uid) async {
+  await db.collection('proveedor').doc(uid).delete();
+}
 

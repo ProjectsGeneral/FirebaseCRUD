@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:jrm_jcz_jjc_firebase/pages/proveedor_list_page.dart';
 
 import 'pages/product_list_page.dart';
 import 'pages/user_home_page.dart';
@@ -85,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
         } else if (email == 'jose@gmail.com') {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Placeholder()),
+            MaterialPageRoute(builder: (context) => Proveedor()),
           );
         } else {
           // Manejar otros casos o redirigir a una página predeterminada

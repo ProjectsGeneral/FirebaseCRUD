@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:jrm_jcz_jjc_firebase/pages/proveedor_edit_page.dart';
 
 import '../services/firebase_service.dart';
-import 'product_create_page.dart';
-import 'product_edit_page.dart';
+import 'proveedor_create_page.dart';
+import 'proveedor_edit_page.dart';
 
-class Categorias extends StatefulWidget {
-  const Categorias({super.key});
+class Proveedor extends StatefulWidget {
+  const Proveedor({super.key});
 
   @override
-  State<Categorias> createState() => _CategoriasState();
+  State<Proveedor> createState() => _ProveedorState();
 }
 
-class _CategoriasState extends State<Categorias> {
+class _ProveedorState extends State<Proveedor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Categorías'),
+        title: Text('Proveedor'),
       ),
       body: FutureBuilder(
         future: getProveedor(),
@@ -38,7 +39,7 @@ class _CategoriasState extends State<Categorias> {
                         builder: (context) {
                           return AlertDialog(
                             title: Text(
-                                "Estas seguro de eliminar la Categoria ${snapshot.data?[index]['nombre']}"),
+                                "Estas seguro de eliminar la Proveedor ${snapshot.data?[index]['nombre']}"),
                             actions: [
                               TextButton(
                                   onPressed: () {
@@ -70,7 +71,7 @@ class _CategoriasState extends State<Categorias> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditCategorias(
+                          builder: (context) => EditProveedor(
                             arguments: ArgumentEdit(
                                 nombre: snapshot.data?[index]['nombre'],
                                 uid: snapshot.data?[index]['uid'] ?? ''),
@@ -94,7 +95,7 @@ class _CategoriasState extends State<Categorias> {
         onPressed: () async {
           await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddCategorias()),
+            MaterialPageRoute(builder: (context) => AddProveedor()),
           );
           setState(() {});
         },
