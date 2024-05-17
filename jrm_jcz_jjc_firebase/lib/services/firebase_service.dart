@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 /* import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart'; */
 
+// instancia de bd
 FirebaseFirestore db = FirebaseFirestore.instance;
 
+///***************************************************************** METODOS PARA USUARIOS */
 // FUNCION PARA OBTENER DATOS DE NUESTRA FIREBASE FIRESTORE
 // Future es una promesa practicamente
 // Future<TipoDatoDevolver>
@@ -24,3 +26,7 @@ Future<List> getPeople() async {
 
   return people;
 }
+
+/// METODO PARA CATEGORIAS
+
+
