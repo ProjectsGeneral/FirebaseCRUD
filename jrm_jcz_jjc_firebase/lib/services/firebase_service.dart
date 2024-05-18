@@ -115,6 +115,7 @@ Future<List> getProveedor() async {
       "uid": doc.id
     };
     
+    
     categoria.add(categ);
   }
 
